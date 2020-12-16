@@ -1,0 +1,68 @@
+.homeBox {
+  width: 100%;
+  height: 100%;
+  padding-bottom: 180px;
+  @include mq(tab){
+    padding: 0;
+  }
+
+  &__top {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 30px;
+
+    h1 {
+      font-size: toRem(36);
+      color: var(--secondary);
+      font-weight: 600;
+      margin-bottom: 10px;
+      @include mq(mobS2){
+        font-size: toRem(24);
+      }
+    }
+
+    h2 {
+      color: var(--grayL);
+      font-weight: 600;
+    }
+  }
+
+  &__content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    padding-bottom: 30px;
+    position: relative;
+    @include mq(tab){
+      max-width: 100%;
+      padding: 0;
+    }
+  }
+
+  &__left {
+    width: 65%;
+    @include mq(tab){
+      width: 100%;
+    }
+  }
+
+  &__right {
+    width: 35%;
+    @include mq(tab){
+      width: 50%;
+     position: absolute;
+     z-index: 333;
+     position: absolute;
+     right: 0;
+     transform: translate(-7%, 20%);
+    }
+    @include mq(mob){
+      width: 80%;
+      transform: unset;
+    }
+  }
+}
+option:first {
+  color: red;
+}

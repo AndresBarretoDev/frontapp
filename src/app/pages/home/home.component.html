@@ -1,0 +1,122 @@
+<div class="homeBox pt30">
+  <div class="homeBox__top">
+    <h1 class="">Cotiza tu seguro automotriz</h1>
+    <h2>¡Resultados instantáneos!</h2>
+  </div>
+  <div class="homeBox__content container">
+
+    <div class="homeBox__left">
+      <!-- Slider main container -->
+      <div class="swiper-container slider">
+        <!-- Additional required wrapper -->
+        <div class="swiper-wrapper">
+          <!-- Slides -->
+          <div class="swiper-slide" *ngFor="let slider of sliderOpts">
+            <div class="slider__banner">
+              <img [src]="slider.banner" alt="" class="img_cover">
+            </div>
+          </div>
+        </div>
+
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
+        <!-- Add Arrows -->
+        <div class="slider__navigation">
+          <div class="swiper-button-next"></div>
+          <div class="swiper-button-prev"></div>
+        </div>
+
+      </div>
+
+    </div>
+    <div class="homeBox__right">
+      <form autocomplete="off" class="form" [formGroup]="quotationForm"
+        (ngSubmit)="handleQuotation(quotationForm.value)">
+        <div class="form-group">
+          <label>Marca del auto</label>
+          <select class="form-control" formControlName="carBrand" required>
+            <option value="chevrolet">Chevrolet</option>
+            <option value="kia">Kia</option>
+            <option value="seat">Seat</option>
+            <option value="bmw">BMW</option>
+            <option value="ford">Ford</option>
+          </select>
+          <small class="text-danger" *ngIf="carBrandInvalid && errorControl.carBrand.errors?.required">
+            Campo obligatorio
+          </small>
+
+        </div>
+        <div class="row">
+          <div class="col col-md-8">
+            <label>Modelo del auto</label>
+            <select class="form-control" formControlName="carModel" required>
+              <option value="tracker">Tracker</option>
+              <option value="leon">Leon</option>
+              <option value="fiesta">Fiesta</option>
+              <option value="x6">x6</option>
+              <option value="picanto">Picanto</option>
+            </select>
+            <small class="text-danger" *ngIf="carModelInvalid && errorControl.carModel.errors?.required">
+              Campo obligatorio
+            </small>
+          </div>
+          <div class="col col-md-4">
+            <label>Año</label>
+            <select class="form-control" formControlName="carYear" required>
+              <option value="2014">2014</option>
+              <option value="2015">2015</option>
+              <option value="2016">2016</option>
+              <option value="2017">2017</option>
+              <option value="2018">2018</option>
+              <option value="2019">2019</option>
+              <option value="2020">2020</option>
+              <option value="2021">2021</option>
+            </select>
+            <small class="text-danger" *ngIf="carYearInvalid && errorControl.carYear.errors?.required">
+              Campo obligatorio
+            </small>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" class="form-control" formControlName="email" aria-describedby="emailHelp" required>
+          <small class="text-danger" *ngIf="emailInvalid && errorControl.email.errors?.required">Campo
+            obligatorio</small>
+          <small class="text-danger" *ngIf="errorControl.email.errors?.pattern">Ingresa
+            un correo válido
+          </small>
+
+        </div>
+        <div class="form-group">
+          <label>Teléfono celular</label>
+          <input type="tel" class="form-control" formControlName="telephone" required maxlength="10">
+          <small class="text-danger" *ngIf="phoneInvalid && errorControl.telephone.errors?.required">Campo
+            obligatorio
+          </small>
+          <small class="text-danger" *ngIf="errorControl.telephone.errors?.pattern">
+            Ingresa un número de teléfono válido
+          </small>
+          <small class="text-danger" *ngIf="errorControl.telephone.errors?.minlength">
+            Ingresa un número de teléfono válido
+          </small>
+        </div>
+
+        <button type="submit" class="btn btn--submit btn-lg">Cotizar ahora</button>
+      </form>
+    </div>
+
+  </div>
+</div>
+
+<section class="modal global-shadow  scaleUpVerCenter" *ngIf="dialog">
+  <div class="modal__overlay" (click)="dialog = !dialog"></div>
+  <div class="modal__content scaleInCenter">
+    <h1 class="mb20 taC">Aviso modal en construcción</h1>
+    <ul>
+      <li *ngFor="let key of Object.keys(tempInfoModal)">
+        <b>{{key}}: </b>{{tempInfoModal[key]}}
+      </li>
+    </ul>
+
+  </div>
+</section>

@@ -1,0 +1,89 @@
+form {
+
+  input[type='text'],
+  input[type='password'],
+  input[type='date'],
+  input[type='phone'],
+  input[type='number'],
+  input[type='email'] {
+    @include placeholder {
+      // Placeholder styles here ↓ ↓ ↓
+      color: red;
+    }
+  }
+
+  input[type='number'] {
+
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+  }
+
+  input[type=number] {
+    -moz-appearance: textfield;
+  }
+}
+
+.form {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  background: var(--grayL2);
+
+  label {
+    font-size: toRem(14);
+    color: var(--grayL);
+  }
+
+  &-control {
+    border-radius: unset;
+    //  border: unset;
+    padding-right: 10px;
+
+  }
+
+  &-group {
+
+    @include mq(tab) {
+      margin-bottom: 0;
+    }
+  }
+
+  .col {
+    @include mq(tab) {
+      padding: 0;
+    }
+  }
+
+  .row {
+    @include mq(tab) {
+      margin-left: initial;
+      margin-right: initial;
+    }
+  }
+
+  .btn--submit {
+    margin-top: auto;
+
+    @include mq(tab) {
+      margin-top: 30px;
+    }
+
+  }
+  .text-danger{
+    // position: absolute;
+  }
+
+}
+
+.error-msg {
+  color: $lRedBrand;
+  font-size: 12px;
+  position: absolute;
+  bottom: -15px;
+  left: 0;
+}
